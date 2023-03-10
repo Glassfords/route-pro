@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Map</title>
+    <link rel="stylesheet" type="text/css" href="mapStyle.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh1nSVlNB1I3VKtT03zW1y4cQrwFuKfVA&callback=initMap&v=weekly" defer></script>
+    <script>
+      function initMap() { 
+      const map = new google.maps.Map(document.getElementById("map"), {
+        mapId: "aac4f562189be74c",
+        center: { lat: 55.858215, lng: -4.241270 },
+        zoom: 10,
+      })
+      new google.maps.Marker({
+        position: {lat: 55.886899038949245, lng: -4.3753355419780835},
+        map,
+        title: "Current Traffic Flow: 80",
+      });
+    }
+    window.initMap = initMap;
+    </script>
+  </body>
+</html>
