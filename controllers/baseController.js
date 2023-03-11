@@ -10,12 +10,7 @@ exports.landing_page = function(req, res) {
 exports.map = function(req, res) {
     
     //add description, lat, lng, flow to array
-    var refinedData = new Array
-    data.forEach(item => {
-        refinedData.push([{description: item.site.from.description}, {lat: item.site.from.lat},{lng: item.site.from.long}, {flow: item.flow}])
-    })
-
-    res.render('map', {layout: false, trafficData: refinedData})
+    res.render('map', {layout: false, trafficData: data})
 }
 
 

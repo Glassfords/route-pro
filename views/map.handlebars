@@ -16,11 +16,13 @@
         center: { lat: 55.858215, lng: -4.241270 },
         zoom: 10,
       })
+      {{#each trafficData}}
       new google.maps.Marker({
-        position: {lat: 55.886899038949245, lng: -4.3753355419780835},
+        position: {lat: {{this.site.from.lat}},lng:{{this.site.from.long}} },
         map,
-        title: "Current Traffic Flow: 80",
+        title: "{{this.site.from.description}}",
       });
+      {{/each}}
     }
     window.initMap = initMap;
     </script>
