@@ -16,9 +16,9 @@ app.set('view engine', 'handlebars')
 //public folder
 app.use(express.static(public))
 app.use(express.urlencoded({extended: false}))
+app.use(express.static(path.join(__dirname, 'node_modules')));
 
-//bootstrap
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
+
 
 //redirect to routes
 app.use(router)

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <div class="container">
         <head>
-            <meta charset="utf-8">
-            <title>RoutePro</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
+            {{> header}}
         </head>
         <body>
-            {{{body}}}
+            {{> navbar}}
+            <div class="container"></div>
+                {{{body}}}
+            </div>
+            <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
         </body>
-    </div>
 </html>
