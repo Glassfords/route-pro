@@ -8,7 +8,6 @@ exports.landing_page = function(req, res) {
 
 //map page
 exports.map = function(req, res) {
-    
     //add description, lat, lng, flow to array
     res.render('map', {layout: false, trafficData: data})
 }
