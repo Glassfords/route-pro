@@ -1,6 +1,3 @@
-//static json
-var data = require('../public/trafficData.json')
-
 //homepage
 exports.landing_page = function(req, res) {
     res.render('index', {title: 'Home'})
@@ -8,8 +5,10 @@ exports.landing_page = function(req, res) {
 
 //map page
 exports.map = function(req, res) {
+    
+    const apiData = res.locals.apiData
     //render page with traffic data
-    res.render('map', {layout: false, trafficData: data, title: 'Map'})
+    res.render('map', {layout: false, trafficData: apiData, title: 'Map'})
 }
 
 //about page
