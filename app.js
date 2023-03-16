@@ -10,8 +10,8 @@ const fs = require('fs')
 const public = path.join(__dirname, "./public")
 
 //handlebars engine
-app.engine('handlebars', expressHandlebars.engine({defaultLayout: 'main'}))
-app.set('view engine', 'handlebars')
+app.engine('hbs', expressHandlebars.engine({defaultLayout: 'main', extname: '.hbs'}))
+app.set('view engine', 'hbs')
 
 //public folder
 app.use(express.static(public))

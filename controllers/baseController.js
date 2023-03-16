@@ -3,13 +3,18 @@ var data = require('../public/trafficData.json')
 
 //homepage
 exports.landing_page = function(req, res) {
-    res.render('index')
+    res.render('index', {title: 'Home'})
 }
 
 //map page
 exports.map = function(req, res) {
-    //add description, lat, lng, flow to array
-    res.render('map', {layout: false, trafficData: data})
+    //render page with traffic data
+    res.render('map', {layout: false, trafficData: data, title: 'Map'})
+}
+
+//about page
+exports.about = function(req, res) {
+    res.render('about', {title: 'About Us'})
 }
 
 

@@ -6,6 +6,8 @@ router.get('/', controller.landing_page)
 
 router.get('/map', controller.map)
 
+router.get('/about', controller.about)
+
 //handle file not found
 router.use(function(req, res) {
     res.status(404)
