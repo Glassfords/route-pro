@@ -24,6 +24,11 @@ app.use(cacheMiddleware);
 //redirect to routes
 app.use(router)
 
+//Database code
+const nedb= require('nedb');
+const db= new nedb({filename:'emp.db', autoload:true});
+console.log('db created');
+
 
 //server - port 3000
 app.listen(3000, () => {
