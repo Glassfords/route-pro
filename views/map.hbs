@@ -2,29 +2,61 @@
 <html>
   <head>
     {{> header}}
-    <title>Simple Map</title>
+    <title>Heatmap</title>
+    <style>
+      #map {
+        height: 100%;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   </head>
   <body>
     {{> navbar}}
     <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh1nSVlNB1I3VKtT03zW1y4cQrwFuKfVA&callback=initMap&v=weekly" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh1nSVlNB1I3VKtT03zW1y4cQrwFuKfVA&callback=initMap&libraries=visualization&v=weekly" defer></script>
     <script>
-      function initMap() { 
-      const map = new google.maps.Map(document.getElementById("map"), {
-        mapId: "aac4f562189be74c",
-        center: { lat: 55.858215, lng: -4.241270 },
-        zoom: 10,
-      })
-      {{#each trafficData}}
-      new google.maps.Marker({
-        position: {lat: {{this.site.from.lat}},lng:{{this.site.from.long}} },
-        map,
-        title: "{{this.site.from.description}}",
-      });
-      {{/each}}
-    }
-    window.initMap = initMap;
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          mapId: "aac4f562189be74c",
+          center: { lat: 55.858215, lng: -4.241270 },
+          zoom: 10,
+        });
+
+        const heatmapData = [];
+        {{#each trafficData}}
+        heatmapData.push(new google.maps.LatLng({{this.site.from.lat}}, {{this.site.from.long}}));
+        {{/each}}
+
+        const heatmap = new google.maps.visualization.HeatmapLayer({
+          data: heatmapData,
+          map: map,
+          opacity: 0.75, // Value between 0 (transparent) and 1 (opaque)
+          radius: 30, // Value in pixels
+          gradient: [
+          "rgba(0, 255, 255, 0)",
+          "rgba(0, 255, 255, 1)",
+          "rgba(0, 191, 255, 1)",
+          "rgba(0, 127, 255, 1)",
+          "rgba(0, 63, 255, 1)",
+          "rgba(0, 0, 255, 1)",
+          "rgba(0, 0, 223, 1)",
+          "rgba(0, 0, 191, 1)",
+          "rgba(0, 0, 159, 1)",
+          "rgba(0, 0, 127, 1)",
+          "rgba(63, 0, 91, 1)",
+          "rgba(127, 0, 63, 1)",
+          "rgba(191, 0, 31, 1)",
+          "rgba(255, 0, 0, 1)",
+          ],
+        });
+      }
+      window.initMap = initMap;
     </script>
   </body>
 </html>
