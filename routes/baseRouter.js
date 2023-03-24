@@ -10,6 +10,8 @@ router.get('/stats', controller.stats)
 
 router.get('/about', controller.about)
 
+router.get('/bike_map', controller.bike_map)
+
 //handle file not found
 router.use(function(req, res) {
     res.status(404)

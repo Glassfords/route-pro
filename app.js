@@ -18,8 +18,10 @@ app.use(express.static(public))
 app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
-//middleware for traffic data (cacheMiddleware.js)
-app.use(cacheMiddleware);
+//middleware for traffic data (cacheMiddleware.nodjs)
+app.use(cacheMiddleware.trafficCacheMiddleware);
+
+app.use('/bike_map',cacheMiddleware.bikeCacheMiddleware);
 
 //redirect to routes
 app.use(router)
