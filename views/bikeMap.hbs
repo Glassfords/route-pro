@@ -28,14 +28,21 @@
         zoom: 10,
       })
       {{#each bikeData.data}}
-      new google.maps.Marker({
+      var marker = new google.maps.Marker({
         position: {lat: {{this.startPlaceLat}},lng:{{this.startPlaceLong}} },
-        map,
-        title: this.startPlaceName,
+        map: map,
         icon: {
             url:'/images/bike_green.png'
         },
       });
+      var infowindow = new google.maps.InfoWindow({
+        content: "<p><b>Location: </b>{{this.startPlaceName}}<p> </br> <p><b>Available Bikes: </b>{{this.numberOfRentals}}<p>"
+      })
+      marker.addListener('click', (function(marker,infowindow) {
+        return function() {
+          infowindow.open(map,marker)
+        }
+      })(marker, infowindow))
       {{/each}}
     }
     window.initMap = initMap;
