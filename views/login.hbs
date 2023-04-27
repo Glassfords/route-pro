@@ -1,0 +1,20 @@
+{{> header}}
+<main class="container">
+  <h1>Login</h1>
+  <p>Log in to your account to manage your personal goals related to nutrition, fitness, and a healthy lifestyle.</p>
+
+  <form action="/users/login" method="POST">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+</main>
+{{> footer}}
